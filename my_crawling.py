@@ -13,7 +13,7 @@ class Crawling:
             "/Users/yoonseonghyeon/Desktop/YSH/programming/solchristmas_ai/chromedriver")
 
         this.SCROLL_PAUSE_TIME = 0.2
-        this.folderName = "./data"
+        this.folderName = "./data/solo"
         this.IMAGE_PAUSE_TIME = 0.4
         this.start()
 
@@ -48,8 +48,9 @@ class Crawling:
             this.last_height = this.new_height
 
     def imageCrawling(this):
-        count = 97
+        count = 184
         this.images = this.driver.find_elements_by_css_selector(".rg_i.Q4LuWd")
+
         for image in this.images:
             try:
                 image.click()
@@ -73,4 +74,4 @@ class Crawling:
         this.driver.close()
 
 
-crawler = Crawling("couple")
+crawler = Crawling("연애 못하는 여자")
