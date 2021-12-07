@@ -7,14 +7,15 @@ import os
 
 
 class Crawling:
-    def __init__(this, category):
+    def __init__(this, category, folder, count):
         this.category = category
         this.driver = webdriver.Chrome(
             "/Users/yoonseonghyeon/Desktop/YSH/programming/solchristmas_ai/chromedriver")
 
         this.SCROLL_PAUSE_TIME = 0.2
-        this.folderName = "./data/solo"
+        this.folderName = "./data/" + folder
         this.IMAGE_PAUSE_TIME = 0.4
+        this.count = count
         this.start()
 
     def start(this):
@@ -48,7 +49,7 @@ class Crawling:
             this.last_height = this.new_height
 
     def imageCrawling(this):
-        count = 278
+
         this.images = this.driver.find_elements_by_css_selector(".rg_i.Q4LuWd")
 
         for image in this.images:
@@ -56,7 +57,7 @@ class Crawling:
                 image.click()
                 time.sleep(this.IMAGE_PAUSE_TIME)
 
-                file_name = str(count) + ".jpg"
+                file_name = str(this.count) + ".jpg"
 
                 completeFileName = os.path.join(this.folderName, file_name)
                 imgUrl = this.driver.find_element_by_xpath(
@@ -66,7 +67,7 @@ class Crawling:
                 f.write(requests.get(imgUrl).content)
                 f.close()
 
-                count += 1
+                this.count += 1
 
             except:
                 pass
@@ -74,4 +75,7 @@ class Crawling:
         this.driver.close()
 
 
-crawler = Crawling("솔로의 관상")
+crawler = Crawling("커플의 관상", "couple", 260)
+
+# G10_
+# smart10_071
