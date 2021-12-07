@@ -48,7 +48,7 @@ class Crawling:
             this.last_height = this.new_height
 
     def imageCrawling(this):
-        count = 184
+        count = 278
         this.images = this.driver.find_elements_by_css_selector(".rg_i.Q4LuWd")
 
         for image in this.images:
@@ -74,4 +74,4 @@ class Crawling:
         this.driver.close()
 
 
-crawler = Crawling("연애 못하는 여자")
+crawler = Crawling("솔로의 관상")
