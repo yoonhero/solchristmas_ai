@@ -75,7 +75,7 @@ class Crawling:
         this.driver.close()
 
 
-crawler = Crawling("커플의 관상", "couple", 260)
+crawler = Crawling("keyword", "couple", 351)
 
 # G10_
 # smart10_071
