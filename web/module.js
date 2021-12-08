@@ -18,11 +18,11 @@ class App {
 
       this.initScreen();
     });
-    this.desktop.classList.add("hidden");
-    this.mobile.classList.add("hidden");
+    // this.desktop.classList.add("hidden");
+    // this.mobile.classList.add("hidden");
 
     this.loading = true;
-    this.loadingComponent.classList.remove("hidden");
+    // this.loadingComponent.classList.remove("hidden");
 
     await this.initScreen();
   }
@@ -31,14 +31,18 @@ class App {
     if (this.screen > 680) {
       // desktop
 
-      // load tensorflow model first
-      this.webcamTensorflow = new WebcamTensorflow();
-      const ok = await this.webcamTensorflow.init();
+      if (this.loading) {
+        // load tensorflow model first
+        this.webcamTensorflow = new WebcamTensorflow();
 
-      if (ok) {
-        this.loading = false;
-      } else {
-        return;
+        document.querySelector(".loadingText").innerText = "인공지능 로딩중...";
+        const ok = await this.webcamTensorflow.init();
+
+        if (ok) {
+          this.loading = false;
+        } else {
+          return;
+        }
       }
 
       this.loadingComponent.classList.add("hidden");

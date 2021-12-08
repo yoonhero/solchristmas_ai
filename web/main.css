@@ -184,5 +184,39 @@ p {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.loading {
+  width: 100vw;
+  height: 80vh;
+  font-family: "Jua", sans-serif;
+  font-size: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingText {
+  margin: 20px;
+  color: #224a39;
+}
+
+.loader {
+  border: 16px solid #e8f3f1; /* Light grey */
+  border-top: 16px solid #4ed2ac; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
