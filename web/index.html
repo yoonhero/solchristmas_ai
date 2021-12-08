@@ -14,12 +14,12 @@
 </head>
 <body>
   
-<main>
+<main id="main" class="desktop">
   <div class="title">솔크 판별기!</div>
 
   <div class="sub-title">당신의 이번년도 크리스마스는 솔크일까요?</div>
 
-  <button class="btn start" type="button" onclick="init()">분석하기!</button>
+  <!-- <button class="btn start" type="button" onclick="init()">분석하기!</button> -->
   <div class="container">
     <div id="webcam-container"></div>
     <div id="label-container">
@@ -46,51 +46,17 @@
   </div>
 </main>
 
+<main class="mobile">
+  mobile!
+</main>
+
+<main class='loading hidden'>
+  loading....
+</main>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-<script type="text/javascript">
-    const URL = "https://teachablemachine.withgoogle.com/models/OIZ-f69pX/";
-
-    let model, webcam, labelContainer, maxPredictions;
-
-    async function init() {
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
-
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
-
-        // Convenience function to setup a webcam
-        const flip = true; // whether to flip the webcam
-        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-        await webcam.setup(); // request access to the webcam
-        await webcam.play();
-        window.requestAnimationFrame(loop);
-
-        // append elements to the DOM
-        document.getElementById("webcam-container").appendChild(webcam.canvas);
-    }
-
-    async function loop() {
-        webcam.update(); // update the webcam frame
-        await predict();
-        window.requestAnimationFrame(loop);
-    }
-
-    // run the webcam image through the image model
-    async function predict() {
-        // predict can take in an image, video or canvas html element
-        const prediction = await model.predict(webcam.canvas);
-        for (let i = 0; i < maxPredictions; i++) {
-            let posibility = String(Math.floor(prediction[i].probability.toFixed(2) * 100)) + "%"
-
-            document.querySelectorAll(".category")[i].innerText = prediction[i].className
-            document.querySelectorAll(".bar_text")[i].innerText = posibility
-            document.querySelectorAll(".bar_main")[i].style.width = posibility
-        }
-    }
-</script>
-
+<script src="./module.js" type="module"></script>
 </body>
 </html>

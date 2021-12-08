@@ -12,7 +12,7 @@ class Crawling:
         this.driver = webdriver.Chrome(
             "/Users/yoonseonghyeon/Desktop/YSH/programming/solchristmas_ai/chromedriver")
 
-        this.SCROLL_PAUSE_TIME = 0.2
+        this.SCROLL_PAUSE_TIME = 1
         this.folderName = "./data/" + folder
         this.IMAGE_PAUSE_TIME = 0.4
         this.count = count
@@ -75,7 +75,7 @@ class Crawling:
         this.driver.close()
 
 
-crawler = Crawling("keyword", "couple", 351)
+crawler = Crawling("예쁜 여자", "couple", 442)
 
 # G10_
 # smart10_071
