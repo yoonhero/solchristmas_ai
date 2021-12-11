@@ -1,3 +1,4 @@
+import Quote from "./quote.js";
 import WebcamTensorflow from "./webcam.js";
 
 class App {
@@ -24,7 +25,7 @@ class App {
     this.loading = true;
     // this.loadingComponent.classList.remove("hidden");
 
-    await this.initScreen();
+    // await this.initScreen();
   }
 
   async initScreen() {
@@ -32,6 +33,7 @@ class App {
       // desktop
 
       if (this.loading) {
+        this.quote = new Quote(Math.floor(Math.random() * 4 + 1) * 1000);
         // load tensorflow model first
         this.webcamTensorflow = new WebcamTensorflow();
 
@@ -40,6 +42,7 @@ class App {
 
         if (ok) {
           this.loading = false;
+          this.quote.deleteInterval();
         } else {
           return;
         }
@@ -49,7 +52,7 @@ class App {
       this.desktop.classList.remove("hidden");
     } else {
       // mobile
-      this.loading.classList.add("hidden");
+      this.loadingComponent.classList.add("hidden");
       this.mobile.classList.remove("hidden");
     }
   }
