@@ -25,7 +25,7 @@ class App {
     this.loading = true;
     // this.loadingComponent.classList.remove("hidden");
 
-    // await this.initScreen();
+    await this.initScreen();
   }
 
   async initScreen() {
@@ -50,6 +50,16 @@ class App {
 
       this.loadingComponent.classList.add("hidden");
       this.desktop.classList.remove("hidden");
+
+      this.countdown = this.desktop.querySelector(".countdonwText");
+
+      const countDate = new Date("dec 25, 2021 00:00:00").getTime();
+      let now = new Date().getTime();
+
+      let gap = countDate - now;
+
+      this.countdown.innerText =
+        "D-" + String(Math.floor(gap / 1000 / 60 / 60 / 24));
     } else {
       // mobile
       this.loadingComponent.classList.add("hidden");
