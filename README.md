@@ -121,6 +121,8 @@ class Crawling:
 
 <strong>[솔크 판별기 Ver 2.0.](https://solxmas.netlify.app/)</strong>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/33cd1cf1-5479-4ae1-af0a-8e82d6130940/deploy-status)](https://app.netlify.com/sites/solxmas/deploys)
+
 Ver 1.0. 에 디테일을 추가했습니다.
 
 업데이트 내용
